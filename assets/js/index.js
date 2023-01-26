@@ -23,11 +23,11 @@ startButton.addEventListener('click', () => {
 })
 
 closePopupButton.addEventListener('click', () => {
-    popupBox.classList.remove('show')
     startButton.classList.add('show')
+    popupBox.classList.remove('show')
 })
 
 formButton.addEventListener('click', () => {
-    popupBox.classList.remove('show')
     container.classList.add('show')
+    popupBox.classList.remove('show')
 })
