@@ -29,15 +29,15 @@
                 <form action="#">
                     <div class="row hours">
                         <label for="input_hours">Horas</label>
-                        <input id="input_hours" type="number" max="99">
+                        <input id="input_hours" type="number" max="99" min="0">
                     </div>
                     <div class="row minutes">
                         <label for="input_minutes">Minutos</label>
-                        <input id="input_minutes" type="number" max="60">
+                        <input id="input_minutes" type="number" max="60" min="0">
                     </div>
                     <div class="row seconds">
                         <label for="input_seconds">Segundos</label>
-                        <input id="input_seconds" type="number" max="60">
+                        <input id="input_seconds" type="number" max="60" min="0">
                     </div>
                     <button id="form_btn" type="submit">Add tempo</button>
                 </form>
