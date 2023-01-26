@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --cor0: #7c2ae8;
+    --bad: #e82a2a;
+}
+
+body {
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 30PX;
+    width: 100vw;
+    height: 100vh;
+}
+
+p {
+    position: relative;
+    color: var(--cor0);
+    font-size: 2em;
+}
+
+.start-button {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    background: #222;
+    color: var(--cor0);
+    font-size: 1.8em;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 0 10px var(--cor0);
+    cursor: pointer;
+}
+
+.start-button.show {
+    display: flex;
+}
+
+.start-button::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: .1px solid var(--cor0);
+    animation: pulse 3s linear infinite;
+    transform-origin: center;
+    opacity: .8;
+    scale: 1;
+}
+
+@keyframes pulse {
+    70% {
+        scale: 1;
+        opacity: .8;
+    }
+
+    100% {
+        scale: 2;
+        opacity: 0;
+    }
+}
+
+.container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container.show {
+    display: flex;
+}
+
+.circular-progress {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 280px;
+    height: 280px;
+    background: conic-gradient(var(--cor0) 360deg, #ededed 0deg);
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+}
+
+.circular-progress::before {
+    content: '';
+    position: absolute;
+    background: #222;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px black;
+}
+
+.time_h, .time_m, .time_s {
+    position: relative;
+    font-size: 3em;
+    color: var(--cor0);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+.controls > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #222;
+    color: var(--cor0);
+    margin: 0px auto;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 10px black;
+    cursor: pointer;
+    transition: .2s;
+}
+
+button i {
+    font-size: 25px;
+}
+
+.controls .Continue-button {
+    display: none;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+.popup-box {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.popup-box .popup {
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    background: #222;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+}
+
+.popup-box, .popup-box .popup {
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+}
+
+.popup-box.show, .popup-box.show .popup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup .content {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.popup .content header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--cor0);
+    border-bottom: 1px solid var(--cor0);
+    padding: 15px 25px;
+}
+
+.content header p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.content header i {
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.content header i:hover {
+    color: #f86a6a;
+}
+
+.content form {
+    margin: 15px 25px 35px;
+    color: var(--cor0);
+}
+
+.content form .row {
+    margin-bottom: 20px;
+}
+
+.content form .row label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.content form .row input {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    color: var(--cor0);
+    padding-left: 5px;
+    border: 1px solid var(--cor0);
+    outline: none;
+}
+
+.content form button {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-radius: 4px;
+    background: var(--cor0);
+    color: white;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.content form button:active {
+    transform: scale(0.9);
+}
