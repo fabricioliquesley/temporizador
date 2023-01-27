@@ -31,7 +31,7 @@ formButton.addEventListener('click', () => {
     if(inputHours.value.length == 0 || inputMinutes.value.length == 0 || inputSeconds.value.length == 0){
         alert('Preencha os espaços em branco abaixo!!')
     } else {
-        if(inputHours.value > 99 || inputMinutes.value > 59 || inputSeconds.value > 59){
+        if((inputHours.value > 99 || inputMinutes.value > 59 || inputSeconds.value > 59) || (inputHours.value < 0 || inputMinutes.value < 0 || inputSeconds.value < 0)){
             alert('Valores invalidos')
         } else {
             container.classList.add('active')
