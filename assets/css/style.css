@@ -81,7 +81,7 @@ p {
     flex-direction: column;
 }
 
-.container.show {
+.container.active {
     display: flex;
 }
 
@@ -108,7 +108,7 @@ p {
     box-shadow: 0 0 5px black;
 }
 
-.time_h, .time_m, .time_s {
+#timer {
     position: relative;
     font-size: 3em;
     color: var(--cor0);
@@ -146,7 +146,7 @@ button i {
     display: none;
 }
 
-button:active {
+.controls > button:active {
     transform: scale(0.9);
 }
 
@@ -234,6 +234,12 @@ button:active {
     padding-left: 5px;
     border: 1px solid var(--cor0);
     outline: none;
+}
+
+.content form .row input::-webkit-outer-spin-button,
+.content form .row input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .content form button {

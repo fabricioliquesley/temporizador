@@ -7,9 +7,6 @@ inputSeconds = popupBox.querySelector('#input_seconds'),
 formButton = popupBox.querySelector('#form_btn'),
 container = document.querySelector('.container'),
 circularProgress = container.querySelector('.circular-progress'),
-time_h = container.querySelector('.time_h'),
-time_m = container.querySelector('.time_m'),
-time_s = container.querySelector('.time_s'),
 ContinueButton = container.querySelector('.Continue-button'),
 pauseButton = container.querySelector('.pause-button'),
 resetButton = container.querySelector('.reset-button'),
@@ -28,6 +25,34 @@ closePopupButton.addEventListener('click', () => {
 })
 
 formButton.addEventListener('click', () => {
-    container.classList.add('show')
+    container.classList.add('active')
     popupBox.classList.remove('show')
+
+    let duration = (parseInt(inputHours.value) * 60 * 60) + (parseInt(inputMinutes.value) * 60) + parseInt(inputSeconds.value)
+
+    display = container.querySelector('#timer')
+    startTimer(duration, display)
 })
+
+function startTimer(duration, display){
+    let timer = duration
+    let hours, minutes, seconds
+
+    setInterval(() => {
+        hours = Math.floor((timer / 60) / 60)
+        minutes = Math.floor(timer / 60 - (hours * 60))
+        seconds = Math.floor(timer % 60)
+
+        hours = hours < 10 ? `0${hours}` : hours
+        minutes = minutes < 10 ? `0${minutes}` : minutes
+        seconds = seconds < 10 ? `0${seconds}` : seconds
+
+        display.innerHTML = `${hours}:${minutes}:${seconds}`
+
+        timer -= 1
+
+        if(timer < 0){
+            display.innerHTML = '00:00:00'
+        }
+    }, 1000);
+}
