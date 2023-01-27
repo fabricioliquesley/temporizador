@@ -31,14 +31,26 @@ formButton.addEventListener('click', () => {
     if(inputHours.value.length == 0 || inputMinutes.value.length == 0 || inputSeconds.value.length == 0){
         alert('Preencha os espaços em branco abaixo!!')
     } else {
-        container.classList.add('active')
-        popupBox.classList.remove('show')
+        if(inputHours.value > 99 || inputMinutes.value > 59 || inputSeconds.value > 59){
+            alert('Valores invalidos')
+        } else {
+            container.classList.add('active')
+            popupBox.classList.remove('show')
     
-        duration = (parseInt(inputHours.value) * 60 * 60) + (parseInt(inputMinutes.value) * 60) + parseInt(inputSeconds.value)
+            duration = (parseInt(inputHours.value) * 60 * 60) + (parseInt(inputMinutes.value) * 60) + parseInt(inputSeconds.value)
     
-        display = container.querySelector('#timer')
-        startTimer(duration, display)
+            display = container.querySelector('#timer')
+            startTimer(duration, display)
+        }
     }
+})
+
+ContinueButton.addEventListener('click', () => {
+    pauseButton.style.display = 'flex'
+    ContinueButton.style.display = 'none'
+
+    ContinueButton.classList.add('activebtn')
+    startTimer(timer, display)
 })
 
 pauseButton.addEventListener('click', () => {
@@ -47,22 +59,23 @@ pauseButton.addEventListener('click', () => {
     pauseButton.style.display = 'none'
 })
 
-ContinueButton.addEventListener('click', () => {
-    pauseButton.style.display = 'flex'
-    ContinueButton.style.display = 'none'
-
-    startTimer(timer, display)
-})
-
 resetButton.addEventListener('click', () => {
     timer = 0
+    display.innerHTML = '00:00:00'
+})
+
+newTimeButton.addEventListener('click', () => {
+    display.innerHTML = '00:00:00'
+    popupBox.classList.add('show')
+    container.classList.remove('active')
 })
 
 function startTimer(duration, display){
     timer = duration
     let hours, minutes, seconds
 
-        cron = setInterval(() => {
+    clearInterval(cron)
+    cron = setInterval(() => {
         hours = Math.floor((timer / 60) / 60)
         minutes = Math.floor(timer / 60 - (hours * 60))
         seconds = Math.floor(timer % 60)
@@ -79,5 +92,6 @@ function startTimer(duration, display){
             display.innerHTML = '00:00:00'
             clearInterval(cron)
         }
+        console.log(timer)
     }, 1000);
 }
