@@ -92,7 +92,7 @@ function startTimer(duration, display){
 
         timer -= 1
 
-        circularProgress.style.background = `conic-gradient(#7d2ae8 ${(360 / gradient) * timer}deg, #ededed 0deg)`
+        circularProgress.style.background = `conic-gradient(#7d2ae8 ${(360 / gradient) * (timer + 1)}deg, #ededed 0deg)`
         
         if(timer < 0){
             display.innerHTML = '00:00:00'
