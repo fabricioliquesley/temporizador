@@ -3,6 +3,11 @@
 <p align="center">
 Projeto criado e desenvolvido por Fabricio Liquesley. <br/>
 
+<p align="center">
+  <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#-projeto">Projeto</a>
+</p>
+
 <br>
 
 <p align="center">
