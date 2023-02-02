@@ -13,8 +13,9 @@ resetButton = container.querySelector('.reset-button'),
 newTimeButton = container.querySelector('.new-time-button'),
 cron,
 duration,
-timer
-
+timer,
+gradient,
+condicion = false
 
 startButton.addEventListener('click', () => {
     inputHours.focus()
@@ -48,8 +49,8 @@ formButton.addEventListener('click', () => {
 ContinueButton.addEventListener('click', () => {
     pauseButton.style.display = 'flex'
     ContinueButton.style.display = 'none'
-
     ContinueButton.classList.add('activebtn')
+
     startTimer(timer, display)
 })
 
@@ -61,9 +62,10 @@ pauseButton.addEventListener('click', () => {
 
 resetButton.addEventListener('click', () => {
     timer = 0
+    gradient = 1
     display.innerHTML = '00:00:00'
 
-    circularProgress.style.background = `conic-gradient(#7d2ae8 ${360 - timer}deg, #ededed 0deg)`
+    newGradient(timer, gradient)
     clearInterval(cron)
 })
 
@@ -75,7 +77,7 @@ newTimeButton.addEventListener('click', () => {
 
 function startTimer(duration, display){
     timer = duration
-    var gradient = timer
+    gradient = timer
     let hours, minutes, seconds
 
     clearInterval(cron)
@@ -91,13 +93,16 @@ function startTimer(duration, display){
         display.innerHTML = `${hours}:${minutes}:${seconds}`
 
         timer -= 1
-
-        circularProgress.style.background = `conic-gradient(#7d2ae8 ${(360 / gradient) * (timer + 1)}deg, #ededed 0deg)`
+        
+        newGradient(timer, gradient)
         
         if(timer < 0){
             display.innerHTML = '00:00:00'
             clearInterval(cron)
         }
-        console.log(timer)
     }, 1000);
+}
+
+function newGradient(timer, gradient){
+    circularProgress.style.background = `conic-gradient(#7d2ae8 ${(360 / gradient) * (timer + 1)}deg, #ededed 0deg)`
 }
