@@ -1,7 +1,7 @@
 <h1 align="center">Temporizador</h1>
 
 <p align="center">
-Projeto criado e desenvolvido por Fabricio liquesley. <br/>
+Projeto criado e desenvolvido por Fabricio Liquesley. <br/>
 
 <br>
 
